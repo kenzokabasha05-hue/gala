@@ -103,7 +103,7 @@ export function EventOnePager() {
         <section className="hero" aria-labelledby="event-title">
           <div className="hero-copy">
             <p className="eyebrow hero-eyebrow"><span className="eyebrow-dot" /> You’re invited</p>
-            <h1 id="event-title">[Event<br className="desktop-break" /> name]</h1>
+            <h1 id="event-title">2026 PLANS</h1>
             <p className="hero-intro">A gathering worth making time for.</p>
             <a className="text-link" href="#details">
               Explore the details <ArrowDown aria-hidden="true" />
