@@ -1,8 +1,5 @@
 import { ArrowDown, ArrowUpRight, CalendarDays, MapPin, Users } from 'lucide-react'
 
-const WHATSAPP_RSVP_URL =
-  'https://wa.me/250788521147?text=Muraho%20Kigali%20Source!%20Nifuza%20kuza%20kuri%20Lights%20On.'
-
 function Wordmark({ className = 'wordmark' }: { className?: string }) {
   return (
     <a className={className} href="#top" aria-label="Kigali Source Company, back to top">
@@ -108,7 +105,8 @@ function RsvpSection() {
           we’ll keep you on the list.
         </p>
       </div>
-      <a className="signup-button" href={WHATSAPP_RSVP_URL} target="_blank" rel="noopener noreferrer">
+      {/* Concept piece: the button is deliberately inert (no href). */}
+      <a className="signup-button" role="link" aria-disabled="true">
         Message us on WhatsApp <ArrowUpRight aria-hidden="true" />
       </a>
     </section>
@@ -136,9 +134,19 @@ export function EventOnePager() {
         <RsvpSection />
         <footer className="site-footer">
           <Wordmark className="wordmark footer-wordmark" />
-          <p>
-            <span lang="rw">Amatara n'ibikoresho by'amashanyarazi</span> · KN 76 St, Kigali · Since 2010
-          </p>
+          <div className="footer-copy">
+            <p>
+              <span lang="rw">Amatara n'ibikoresho by'amashanyarazi</span> · KN 76 St, Kigali · Since 2010
+            </p>
+            <p className="footer-concept">
+              Concept piece by Chris Kabasha. The shop is real — the event isn’t.
+              <br />
+              See the real site:{' '}
+              <a href="https://kigalisourcecompany.com" target="_blank" rel="noopener noreferrer">
+                kigalisourcecompany.com
+              </a>
+            </p>
+          </div>
           <a className="back-to-top" href="#top">Back to top ↑</a>
         </footer>
       </div>
