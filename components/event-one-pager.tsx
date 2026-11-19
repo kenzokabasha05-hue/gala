@@ -1,18 +1,27 @@
 import { ArrowDown, ArrowUpRight, CalendarDays, MapPin, Users } from 'lucide-react'
 
+const WHATSAPP_RSVP_URL =
+  'https://wa.me/250788521147?text=Muraho%20Kigali%20Source!%20Nifuza%20kuza%20kuri%20Lights%20On.'
+
+function Wordmark({ className = 'wordmark' }: { className?: string }) {
+  return (
+    <a className={className} href="#top" aria-label="Kigali Source Company, back to top">
+      <span className="wordmark-mark" aria-hidden="true">K</span>
+      <span>KIGALI SOURCE</span>
+    </a>
+  )
+}
+
 function SiteHeader() {
   return (
     <header className="site-header">
-      <a className="wordmark" href="#top" aria-label="Event page home">
-        <span className="wordmark-mark" aria-hidden="true">E</span>
-        <span>EVENT PAGE</span>
-      </a>
+      <Wordmark />
       <nav className="site-nav" aria-label="Main navigation">
         <a href="#details">Details</a>
         <a href="#about">About</a>
       </nav>
-      <a className="header-cta" href="#signup">
-        Sign up <ArrowUpRight aria-hidden="true" />
+      <a className="header-cta" href="#rsvp">
+        RSVP <ArrowUpRight aria-hidden="true" />
       </a>
     </header>
   )
@@ -20,28 +29,28 @@ function SiteHeader() {
 
 function EventPoster() {
   return (
-    <div className="poster" aria-label="Event poster placeholder">
+    <div className="poster" role="img" aria-label="Lights On poster: every light switched on, KN 76 St">
       <div className="poster-topline">
         <span>AN INVITATION</span>
-        <span>EST. ———</span>
+        <span>EST. 2010</span>
       </div>
       <div className="poster-shape" aria-hidden="true">
         <span className="poster-shape-inner" />
       </div>
       <div className="poster-caption">
-        <span>GOOD THINGS</span>
-        <span>HAPPEN HERE.</span>
+        <span>EVERY LIGHT</span>
+        <span>SWITCHED ON.</span>
       </div>
-      <span className="poster-index" aria-hidden="true">01 / 01</span>
+      <span className="poster-index" aria-hidden="true">KN 76 ST</span>
     </div>
   )
 }
 
 function EventDetails() {
   const details = [
-    { icon: CalendarDays, label: 'When', value: '[Date and time]' },
-    { icon: MapPin, label: 'Where', value: '[Venue or location]' },
-    { icon: Users, label: 'Who it’s for', value: '[Audience]' },
+    { icon: CalendarDays, label: 'When', value: 'Friday 12 February 2027, 6:00 pm until late' },
+    { icon: MapPin, label: 'Where', value: 'Kigali Source Company, KN 76 St, Kigali' },
+    { icon: Users, label: 'Who it’s for', value: 'Builders, electricians, and anyone finishing a house' },
   ]
 
   return (
@@ -70,26 +79,37 @@ function AboutSection() {
     <section className="about-section" id="about" aria-labelledby="about-heading">
       <div>
         <p className="eyebrow">A little about it</p>
-        <h2 id="about-heading">Make room<br />for something good.</h2>
+        <h2 id="about-heading">A lighting shop is best seen in the dark.</h2>
       </div>
       <div className="about-copy">
-        <p>[Add the first line about what happens at the event.]</p>
-        <p>[Add one or two more lines with what guests can expect.]</p>
+        <p>
+          Catalogues flatten everything. A chandelier that looks ordinary on the page is a
+          different object lit above your head, and a floodlight rated at 100 watts means
+          nothing until you have stood under one.
+        </p>
+        <p>
+          So for one evening we switch on the whole shop. Every chandelier, ceiling panel,
+          garden lamp and floodlight we stock, all running at once. Come and see what you are
+          specifying before you specify it.
+        </p>
       </div>
     </section>
   )
 }
 
-function SignupSection() {
+function RsvpSection() {
   return (
-    <section className="signup-section" id="signup" aria-labelledby="signup-heading">
+    <section className="signup-section" id="rsvp" aria-labelledby="rsvp-heading">
       <div className="signup-copy">
         <p className="eyebrow">Be part of it</p>
-        <h2 id="signup-heading">Save your spot.</h2>
-        <p className="signup-note">[Add a ticket link or signup instructions.]</p>
+        <h2 id="rsvp-heading">Tell us you’re coming.</h2>
+        <p className="signup-note">
+          Space is limited by the size of the shop floor. Send a message on WhatsApp and
+          we’ll keep you on the list.
+        </p>
       </div>
-      <a className="signup-button" href="#signup">
-        Add sign-up link <ArrowUpRight aria-hidden="true" />
+      <a className="signup-button" href={WHATSAPP_RSVP_URL} target="_blank" rel="noopener noreferrer">
+        Message us on WhatsApp <ArrowUpRight aria-hidden="true" />
       </a>
     </section>
   )
@@ -103,23 +123,22 @@ export function EventOnePager() {
         <section className="hero" aria-labelledby="event-title">
           <div className="hero-copy">
             <p className="eyebrow hero-eyebrow"><span className="eyebrow-dot" /> You’re invited</p>
-            <h1 id="event-title">2026 PLANS</h1>
-            <p className="hero-intro">A gathering worth making time for.</p>
+            <h1 id="event-title">LIGHTS ON</h1>
+            <p className="hero-intro">One evening. Every light in the shop switched on at once.</p>
             <a className="text-link" href="#details">
-              Explore the details <ArrowDown aria-hidden="true" />
+              See what’s on <ArrowDown aria-hidden="true" />
             </a>
           </div>
           <EventPoster />
         </section>
         <EventDetails />
         <AboutSection />
-        <SignupSection />
+        <RsvpSection />
         <footer className="site-footer">
-          <a className="wordmark footer-wordmark" href="#top">
-            <span className="wordmark-mark" aria-hidden="true">E</span>
-            <span>EVENT PAGE</span>
-          </a>
-          <p>More details coming soon.</p>
+          <Wordmark className="wordmark footer-wordmark" />
+          <p>
+            <span lang="rw">Amatara n'ibikoresho by'amashanyarazi</span> · KN 76 St, Kigali · Since 2010
+          </p>
           <a className="back-to-top" href="#top">Back to top ↑</a>
         </footer>
       </div>

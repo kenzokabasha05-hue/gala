@@ -232,7 +232,7 @@
 .signup-section .eyebrow { color: #d7bd99; }
 .signup-section h2 { margin: 0; font-size: clamp(40px, 6vw, 70px); font-weight: 500; letter-spacing: -.075em; line-height: .95; }
 .signup-note { margin: 20px 0 0; color: #c3c3cb; font-size: 13px; }
-.signup-button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 28px; padding: 0 20px; background: white; color: var(--ink); font-size: 12px; font-weight: 700; text-decoration: none; transition: background 160ms ease, color 160ms ease; }
+.signup-button { display: inline-flex; flex-shrink: 0; white-space: nowrap; min-height: 52px; align-items: center; justify-content: center; gap: 28px; padding: 0 20px; background: white; color: var(--ink); font-size: 12px; font-weight: 700; text-decoration: none; transition: background 160ms ease, color 160ms ease; }
 .signup-button:hover { background: #efe6d8; color: #493a2a; }
 
 .site-footer { display: flex; min-height: 94px; align-items: center; justify-content: space-between; gap: 20px; }
@@ -265,16 +265,20 @@
   .poster { min-height: 360px; }
   .details-section { padding: 62px 0 76px; }
   .section-heading { align-items: start; flex-direction: column; gap: 16px; margin-bottom: 26px; }
-  .detail-row { grid-template-columns: 24px 24px minmax(90px, .7fr) minmax(110px, 1fr); gap: 10px; min-height: 76px; }
-  .detail-row h3, .detail-row p { font-size: 12px; }
+  /* Long real values (date, address, audience) get their own line under the label. */
+  .detail-row { grid-template-columns: 24px 24px minmax(0, 1fr); column-gap: 10px; row-gap: 4px; min-height: 76px; padding: 16px 0; }
+  .detail-row h3, .detail-row p { font-size: 13px; }
+  .detail-row p { grid-column: 3; line-height: 1.45; }
   .detail-arrow { display: none; }
   .about-section { grid-template-columns: 1fr; gap: 36px; padding: 58px 24px; }
   .about-section h2 { font-size: clamp(43px, 12vw, 65px); }
   .about-copy p { font-size: 14px; }
   .signup-section { align-items: start; flex-direction: column; padding: 56px 24px; }
   .signup-section h2 { font-size: clamp(44px, 12vw, 64px); }
-  .site-footer { min-height: 84px; flex-wrap: wrap; padding: 18px 0; }
-  .site-footer p { display: none; }
+  .signup-button { align-self: stretch; justify-content: space-between; }
+  .site-footer { min-height: 84px; flex-wrap: wrap; padding: 18px 0; row-gap: 6px; }
+  /* Keep the tagline on phones: it carries the Kinyarwanda line and "Since 2010". */
+  .site-footer p { order: 3; flex-basis: 100%; margin: 0; line-height: 1.6; }
 }
 
 @media (max-width: 390px) {
@@ -282,6 +286,5 @@
   .site-nav { gap: 12px; margin-right: 12px; }
   .site-nav a { font-size: 10px; }
   .header-cta { gap: 4px; font-size: 10px; }
-  .detail-row { grid-template-columns: 20px 20px minmax(72px, .75fr) minmax(96px, 1fr); gap: 8px; }
-  .detail-row h3, .detail-row p { font-size: 11px; }
+  .detail-row { grid-template-columns: 20px 20px minmax(0, 1fr); column-gap: 8px; }
 }

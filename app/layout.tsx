@@ -2,26 +2,35 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
+const title = 'Lights On — Kigali Source Company'
+const description =
+  'One evening at Kigali Source Company, KN 76 St, Kigali: every light in the shop switched on at once. Friday 12 February 2027, 6pm until late.'
+
+// Absolute URLs are required for link previews (WhatsApp, X, Facebook).
+// On Vercel this resolves to the production domain; set NEXT_PUBLIC_SITE_URL to override.
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : 'http://localhost:3000')
+
 export const metadata: Metadata = {
-  title: 'Event Page — You’re Invited',
-  description: 'Event details, what to expect, and how to sign up.',
-  generator: 'v0.app',
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  applicationName: 'Kigali Source Company',
+  openGraph: {
+    type: 'website',
+    url: '/',
+    siteName: 'Kigali Source Company',
+    title,
+    description,
+    locale: 'en_GB',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
   },
 }
 
