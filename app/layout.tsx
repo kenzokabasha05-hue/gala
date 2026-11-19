@@ -4,7 +4,7 @@ import './globals.css'
 
 const title = 'Lights On — Kigali Source Company'
 const description =
-  'One evening at Kigali Source Company, KN 76 St, Kigali: every light in the shop switched on at once. Friday 12 February 2027, 6pm until late.'
+  'Concept piece — One evening at Kigali Source Company, KN 76 St, Kigali: every light in the shop switched on at once. Friday 12 February 2027, 6pm until late.'
 
 // Absolute URLs are required for link previews (WhatsApp, X, Facebook).
 // On Vercel this resolves to the production domain; set NEXT_PUBLIC_SITE_URL to override.
